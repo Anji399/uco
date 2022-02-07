@@ -1,0 +1,13 @@
+- name: download artifact
+  get_url:
+     url: https://github.com/Anji399/uco/raw/master/target/uco.war
+     dest: /tmp
+- name: copy artifact
+  copy:
+     src: /tmp/uco.war
+     dest: /opt/tomcat/webapps/uco.war
+     owner: tomcat
+     group: tomcat
+     remote_src: yes
+  notify: restart tomcat
+ 
